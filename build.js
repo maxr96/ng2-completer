@@ -67,7 +67,18 @@ shell.rm(`-Rf`, `${NPM_DIR}/*.js`);
 shell.rm(`-Rf`, `${NPM_DIR}/*.js.map`);
 shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js`);
 shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js.map`);
+shell.rm(`-Rf`, `dist/stats.html`);
 
 shell.cp(`-Rf`, [`package.json`, `LICENSE.md`, `README.md`], `${NPM_DIR}`);
+
+shell.rm(`-Rf`, `src`);
+shell.rm(`-Rf`, `config`);
+shell.rm(`-Rf`, `test`);
+shell.rm(`-Rf`, `*.md`, '*.ts', '*.json', '*.js', '*.txt');
+
+shell.cd(`..`);
+shell.mv(`ng2-completer/${NPM_DIR}/*`,`ng2-completer`);
+
+shell.rm(`-Rf`, `ng2-completer/dist`);
 
 shell.echo(chalk.green(`End building`));
